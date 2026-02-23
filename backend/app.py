@@ -269,6 +269,22 @@ def chatbot_message():
 
 # ─── HEALTH CHECK ─────────────────────────────────────────────
 
+@app.route('/', methods=['GET'])
+def root():
+    return jsonify({
+        'status': 'ok',
+        'app': 'FoodieHub API',
+        'version': '1.0.0',
+        'endpoints': {
+            'health': '/api/health',
+            'menu': '/api/menu',
+            'categories': '/api/menu/categories',
+            'chatbot': '/api/chatbot (POST)',
+            'orders': '/api/orders (POST)',
+            'recent_orders': '/api/orders/recent'
+        }
+    })
+
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({'status': 'ok', 'message': 'Restaurant API is running!'})
